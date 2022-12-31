@@ -1,0 +1,25 @@
+.reset {
+    min-height: calc(100vh - 54rem);
+    display: grid;
+    place-items: center;
+}
+
+.api_message {
+    margin-top: 1rem;
+}
+
+.success {
+    color: $success-color;
+    font-size: 1.4rem;
+    padding: 1rem;
+    width: fit-content;
+    height: 4rem;
+}
+
+.error {
+    color: $error-color;
+    font-size: 1.4rem;
+    padding: 1rem;
+    width: fit-content;
+    height: 4rem;
+}

@@ -1,0 +1,151 @@
+.footer {
+  background: #f8f8f8;
+  &__container {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+      "links"
+      "socials"
+      "newsletter"
+      "payment"
+      "copyright";
+    gap: 3rem;
+    padding: 1rem;
+    @media (min-width: 800px) {
+      grid-template-areas:
+        "links socials"
+        "links newsletter"
+        "copyright payment";
+    }
+    @media (min-width: 1200px) {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  img {
+    width: 14rem;
+    height: 4rem;
+    object-fit: contain;
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+  }
+  &__links {
+    display: grid;
+    grid-area: links;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    ul {
+      padding: 5px;
+      b {
+        text-transform: uppercase;
+      }
+      li {
+        font-style: 1.2rem;
+        a {
+          color: #666;
+          line-height: 23px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  &__socials {
+    grid-area: socials;
+    section {
+      ul {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        li {
+          font-style: 2rem;
+          color: #666;
+          &:hover {
+            color: $blue-color;
+          }
+        }
+      }
+    }
+  }
+  &__flex {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  &__newsletter {
+    grid-area: newsletter;
+    input {
+      outline: none;
+      border: 1px solid #999;
+      flex: 1;
+      height: 4rem;
+      font-size: 1.4rem;
+      padding-left: 1rem;
+    }
+    button {
+      align-self: normal;
+      width: 15rem;
+    }
+    p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #666;
+      a {
+        color: $blue-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__payment {
+    grid-area: payment;
+  }
+
+  &__flexwrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    img {
+      width: 6rem;
+      height: 3.6rem;
+      object-fit: cover;
+    }
+  }
+
+  &__copyright {
+    grid-area: copyright;
+    section {
+      font-size: 1.2rem;
+      color: #666;
+      padding-bottom: 1rem;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 2rem;
+      li {
+        position: relative;
+        text-decoration: underline;
+        &::after {
+          content: "";
+          width: 1px;
+          height: 1.5rem;
+          background: #666;
+          position: absolute;
+          right: -1rem;
+        }
+        &:last-child::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

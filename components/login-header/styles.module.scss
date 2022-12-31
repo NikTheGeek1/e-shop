@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  // column-gap: 1rem;
+  .back__svg {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #66666657;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    &:hover {
+      border-color: $blue-color;
+      svg {
+        fill: $blue-color;
+      }
+    }
+    svg {
+      width: 2rem;
+      height: 2rem;
+      fill: #222;
+    }
+  }
+  span {
+    font-weight: 6000;
+    font-size: 1.4rem;
+    a {
+      color: $blue-color;
+      cursor: pointer;
+      border-bottom: 1px solid $blue-color;
+      padding-bottom: 5px;
+    }
+  }
+}

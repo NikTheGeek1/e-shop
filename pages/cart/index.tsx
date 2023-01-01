@@ -1,6 +1,6 @@
 import Footer from "../../components/footer";
 import Header from "../../components/header";
-import { CountryType } from "../../utils/server-props/get-country";
+import { CountryType } from "../../types/country";
 
 type CartProps = {
   country: CountryType;

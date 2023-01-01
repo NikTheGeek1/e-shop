@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { IoLocationSharp } from "react-icons/io5";
-import { CountryType } from "../../utils/server-props/get-country";
+import { CountryType } from "../../types/country";
 
 type CopyrightProps = {
   country: CountryType;

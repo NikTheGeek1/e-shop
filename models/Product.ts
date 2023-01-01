@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+import { CategoryType } from "./Category";
+import { SubCategoryType } from "./SubCategory";
+import { IUser } from "./User";
+
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 export type ProductType = {
@@ -7,8 +11,8 @@ export type ProductType = {
   description: string;
   brand: string;
   slug: string;
-  category: string;
-  subCategories: string[];
+  category: string | CategoryType;
+  subCategories: string[] | SubCategoryType[];
   details: {
     name: string;
     value: string;
@@ -23,11 +27,11 @@ export type ProductType = {
   numReviews: number;
   shipping: number;
   subProducts: SubProductType[];
-}
+};
 
 export type SubProductType = {
   sku: string;
-  images: string[];
+  images: { url: string; public_url: string }[];
   description_images: string[];
   color: {
     color: string;
@@ -40,9 +44,9 @@ export type SubProductType = {
   }[];
   discount: number;
   sold: number;
-}
+};
 export type ReviewType = {
-  reviewBy: string;
+  reviewBy: string | IUser;
   rating: number;
   review: string;
   size: string;
@@ -53,7 +57,7 @@ export type ReviewType = {
   fit: string;
   images: string[];
   likes: string[];
-}
+};
 
 const reviewSchema = new mongoose.Schema({
   reviewBy: {

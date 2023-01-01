@@ -1,4 +1,4 @@
-import { CountryType } from "../../utils/server-props/get-country";
+import { CountryType } from "../../types/country";
 import Ad from "./Ad";
 import Main from "./Main";
 import styles from "./styles.module.scss";

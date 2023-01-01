@@ -1,4 +1,4 @@
-import styles from "../../styles/signin.module.scss";
+import styles from "../../styles/Signin.module.scss";
 import { BiRightArrowAlt, BiUser } from "react-icons/bi";
 import Link from "next/link";
 import { Form, Formik } from "formik";

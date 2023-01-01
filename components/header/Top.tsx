@@ -5,7 +5,7 @@ import { RiAccountPinCircleLine, RiArrowDropDownFill } from "react-icons/ri";
 import Link from "next/link";
 import { useState } from "react";
 import UserMenu from "./UserMenu";
-import { CountryType } from "../../utils/server-props/get-country";
+import { CountryType } from "../../types/country";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 

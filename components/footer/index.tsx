@@ -1,4 +1,4 @@
-import { CountryType } from "../../utils/server-props/get-country";
+import { CountryType } from "../../types/country";
 import Copyright from "./Copyright";
 import Links from "./Links";
 import Newsletter from "./Newsletter";

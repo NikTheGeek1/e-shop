@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
+import { CategoryType } from "./Category";
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 export type SubCategoryType = {
+  _id?: string;
   name: string;
   slug: string;
-  parent: string;
+  parent: string | CategoryType;
 };
+
 const subCategorySchema = new mongoose.Schema({
   name: {
     type: String,

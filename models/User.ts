@@ -1,15 +1,15 @@
-import mongoose, {SchemaDefinitionProperty} from "mongoose";
+import mongoose from "mongoose";
 
 export interface SessionUser {
-  id: mongoose.Schema.Types.ObjectId;
+  id: mongoose.Schema.Types.ObjectId | string;
   name: string;
   email: string;
   role: string;
   image: string;
 }
 
-export interface IUser {
-  _id: mongoose.Schema.Types.ObjectId;
+export interface IUser extends mongoose.Document {
+  _id: mongoose.Schema.Types.ObjectId | string;
   name: string;
   email: string;
   password: string;
@@ -20,7 +20,8 @@ export interface IUser {
   address: AddressType[];
 }
 
-type AddressType = {
+export type AddressType = {
+  _id?: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -30,7 +31,7 @@ type AddressType = {
   zipCode: string;
   state: string;
   country: string;
-  active: boolean;
+  active?: boolean;
 };
 
 const userSchema = new mongoose.Schema<IUser>(
@@ -111,5 +112,5 @@ const userSchema = new mongoose.Schema<IUser>(
   { timestamps: true } // This will automatically add createdAt and updatedAt fields to our documents
 );
 
-const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);
+const User = mongoose.models.User as mongoose.Model<IUser> || mongoose.model<IUser>("User", userSchema);
 export default User;

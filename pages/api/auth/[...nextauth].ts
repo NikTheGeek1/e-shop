@@ -59,10 +59,12 @@ export default NextAuth({
   callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
       const user = await User.findById(token.sub);
+      if (!user) return session;
       if (session.user){
         //  what type is the session.user? Answer: 
         (session.user as SessionUser).id = token.sub || user._id.toString();
         (session.user as SessionUser).role = user.role || "user";
+        (token).role = user.role || "user";
       }
       return session;
     },

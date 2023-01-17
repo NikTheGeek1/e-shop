@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import getCountryServerSideProps, { CountryType } from "../utils/server-props/get-country";
+import getCountryServerSideProps from "../utils/server-props/get-country";
 import styles from "../styles/Home.module.scss";
 import HomeMain from "../components/home/main";
 import FlashDeals from "../components/home/flash-deals";
@@ -12,6 +12,7 @@ import Product, { ProductType } from "../models/Product";
 import { women_swiper } from "../data/home";
 import ProductsSwiper from "../components/products-swiper";
 import ProductCard from "../components/product-card";
+import { CountryType } from "../types/country";
 
 type HomeProps = {
   country: CountryType;

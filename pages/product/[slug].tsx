@@ -19,6 +19,8 @@ import SubCategory from "../../models/SubCategory";
 import MainSwiper from "../../components/product-page/main-swiper";
 import { useState } from "react";
 import Infos from "../../components/product-page/infos";
+import Reviews from "../../components/product-page/reviews";
+import User from "../../models/User";
 
 type ProductProps = {
   product: LeanProductType;
@@ -34,7 +36,7 @@ export default function ProductPage({ product, country }: ProductProps) {
       </Head>
       <Header country={country} />
       <div className={styles.product}>
-        <div className={styles.container}>
+        <div className={styles.product__container}>
           <div className={styles.path}>
             Home / {product.category.name} / {
               product.subCategories.map((subCategory) => <span>/{subCategory.name}</span>)
@@ -44,6 +46,7 @@ export default function ProductPage({ product, country }: ProductProps) {
             <MainSwiper images={product.images} activeImg={activeImg} />
             <Infos product={product} setActiveImg={setActiveImg}/>
           </div>
+          <Reviews product={product} />
         </div>
       </div>
       <Footer country={country} />
@@ -62,6 +65,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product: FullProductType = await Product.findOne({ slug })
     .populate({path: "category", model: Category}) // we need to populate the Category field (using the category id) to get the category name
     .populate({path: "subCategories", model: SubCategory})
+    .populate({ path: "reviews.reviewBy", model: User })
     .lean();
 
   if (!product) {

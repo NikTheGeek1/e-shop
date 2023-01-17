@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
+import { ColorType, ProductDetailsType, ProductQuestionType, SizeType } from "../types/product";
 import { CategoryType } from "./Category";
 import { SubCategoryType } from "./SubCategory";
 import { IUser } from "./User";
 
+
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-export type ProductType = {
+export interface ProductType extends mongoose.Document {
   _id: string;
   name: string;
   description: string;
@@ -13,14 +15,8 @@ export type ProductType = {
   slug: string;
   category: string | CategoryType;
   subCategories: string[] | SubCategoryType[];
-  details: {
-    name: string;
-    value: string;
-  }[];
-  questions: {
-    question: string;
-    answer: string;
-  }[];
+  details: ProductDetailsType[];
+  questions: ProductQuestionType[];
   reviews: ReviewType[];
   refundPolicy: string;
   rating: number;
@@ -33,19 +29,13 @@ export type SubProductType = {
   sku: string;
   images: { url: string; public_url: string }[];
   description_images: string[];
-  color: {
-    color: string;
-    image: string;
-  };
-  sizes: {
-    size: string;
-    qty: number;
-    price: number;
-  }[];
+  color: ColorType;
+  sizes: SizeType[];
   discount: number;
   sold: number;
 };
 export type ReviewType = {
+  _id?: string;
   reviewBy: string | IUser;
   rating: number;
   review: string;
@@ -55,8 +45,10 @@ export type ReviewType = {
     image: string;
   };
   fit: string;
-  images: string[];
-  likes: string[];
+  images: { url: string; public_url: string }[];
+  likes: {likes: number};
+  updatedAt?: string;
+  createdAt?: string;
 };
 
 const reviewSchema = new mongoose.Schema({
@@ -186,6 +178,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+  mongoose.models.Product || mongoose.model<ProductType & mongoose.Document>("Product", productSchema);
 
 export default Product;

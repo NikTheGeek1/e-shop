@@ -4,11 +4,15 @@ import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import cart from "./cart-slice";
+import dialog from "./dialog-slice";
+import expandSidebar from "./expand-slice";
 
 export type IRootState = ReturnType<typeof reducer>;
 
 const reducers = combineReducers({
-    cart
+    cart,
+    dialog,
+    expandSidebar,
 });
 
 const config = {

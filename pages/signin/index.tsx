@@ -18,13 +18,12 @@ import {
 import DotLoaderComponent from "../../components/loaders/dot-loader";
 import axios from "axios";
 import Router from "next/router";
-import countryServerProps, {
-  CountryType,
-} from "../../utils/server-props/get-country";
+import countryServerProps from "../../utils/server-props/get-country";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import LoginHeader from "../../components/login-header";
 import Image from "next/image";
+import { CountryType } from "../../types/country";
 
 type UserValues = {
   loginEmail: string;
@@ -325,7 +324,7 @@ export default function SignIn({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { req, query } = context;
   const session = await getSession({ req });
-  const  callbackUrl  = query.callbackUrl || "";
+  const callbackUrl = query.callbackUrl || "";
 
   if (session) {
     return {
